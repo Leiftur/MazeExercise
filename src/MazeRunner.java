@@ -39,12 +39,12 @@ public class MazeRunner {
         }
     }
 
-    public static void intro(Maze newMaze){
+    private static void intro(Maze newMaze){
         System.out.println("Welcome to Maze Runner! \nHere is your current position:");
         newMaze.printMap();
     }
 
-    public static String userMove(){
+    private static String userMove(){
         System.out.print("Where would you like to move? (R, L, U, D) ");
         String choice = input.next();
         if (choice.equalsIgnoreCase("R") || choice.equalsIgnoreCase("L") || choice.equalsIgnoreCase("U") || choice.equalsIgnoreCase("D")){
@@ -52,32 +52,31 @@ public class MazeRunner {
         }
         else {
             System.out.println("Choose the valid move!");
-            return choice = userMove();
+            return userMove();
         }
     }
 
-    public static boolean tryMove(String choice){
+    private static boolean tryMove(String choice){
         if (choice.equals("R") && myMap.canIMoveRight()){
             myMap.moveRight();
             return true;
         }
-        else if (choice.equals("L") && myMap.canIMoveLeft()){
+        if (choice.equals("L") && myMap.canIMoveLeft()){
             myMap.moveLeft();
             return true;
         }
-        else if (choice.equals("U") && myMap.canIMoveUp()){
+        if (choice.equals("U") && myMap.canIMoveUp()){
             myMap.moveUp();
             return true;
         }
-        else if(choice.equals("D") && myMap.canIMoveDown()){
+        if (choice.equals("D") && myMap.canIMoveDown()){
             myMap.moveDown();
             return true;
         }
-        else
-            return false;
+        return false;
     }
 
-    public static void navigatePit(String choice) {
+    private static void navigatePit(String choice) {
         System.out.print("Watch out! There's a pit ahead, jump it? ");
         String jumpAnswer = input.next();
         if (jumpAnswer.startsWith("y")) {
@@ -89,7 +88,7 @@ public class MazeRunner {
         }
     }
 
-    public static void movesMessage(int moves){
+    private static void movesMessage(int moves){
         switch(moves){
             case 50:
                 System.out.println("Warning: You have made 50 moves, you have 50 remaining before the maze exit closes");
